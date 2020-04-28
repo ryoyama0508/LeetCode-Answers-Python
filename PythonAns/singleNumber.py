@@ -8,7 +8,7 @@ class Solution(object):
 
         res = 0
         for num in nums:
-            res ^= num
+            res ^= num  # https://qiita.com/YamadaTakahito/items/79693ce08cad8baf130b
             print(res)
 
         return res
