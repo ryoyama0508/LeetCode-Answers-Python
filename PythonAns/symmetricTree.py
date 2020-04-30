@@ -12,11 +12,29 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        if len(self) % 2 != 0:
+        if root is None:
+            return True
+
+        return self.checkNords(root.left, root.right)
+
+    def checkNords(self, l, r):
+        if l is None:
+            if r is None:
+                return True
+            else:
+                return False
+        if r is None:
+            if l is None:
+                return True
+            else:
+                return False
+
+        if r.right is None and r.left is None and l.right is None and l.left is None:
+            if r.val == l.val:
+                return True
             return False
 
-        else:
-            return True
+        return l.val == r.val and self.checkNords(l.left, r.right) and self.checkNords(l.right, r.left)
 
 
 nums = [2, 3, 4, 4, 2]
