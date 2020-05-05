@@ -19,8 +19,9 @@ class Solution(object):
         if head is None:
             return False
 
-        addressDic[head.val] = head.next
         if head.val in addressDic:
-            if addressDic[head.val] == head.next:
+            if addressDic[head.val] == hex(id(head.next)):
                 return True
-        self.chaseCircle(head.next, addressDic)
+        addressDic[head.val] = hex(id(head.next))
+        isTrue = self.chaseCircle(head.next, addressDic)
+        return isTrue
