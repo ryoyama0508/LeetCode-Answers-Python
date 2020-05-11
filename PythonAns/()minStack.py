@@ -1,5 +1,4 @@
 class MinStack(object):
-
     def __init__(self):
         """
         initialize your data structure here.
@@ -39,9 +38,14 @@ class MinStack(object):
         """
         oldNode = self
         newNode = self
-        while newNode.next:
-            oldNode = newNode
-            newNode = newNode.next
+        if newNode.next:
+            while newNode.next:
+                oldNode = newNode
+                newNode = newNode.next
+
+        if self.next is None:
+            self.val = None
+            return
 
         oldNode.next = None
         return
@@ -72,8 +76,8 @@ class MinStack(object):
 
         if newNode.val < min:
             min = newNode.val
-        return min
 
+        return min
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
