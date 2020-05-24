@@ -57,10 +57,10 @@ class Solution(object):
                 else:
                     break
 
-        if n1.next:
-            currNode.next = n1
-        elif n2.next:
+        if n1.next is None:
             currNode.next = n2
+        elif n2.next is None:
+            currNode.next = n1
         else:
             if currNode.val == n1.val:
                 currNode.next = n2
