@@ -28,3 +28,13 @@ class Solution(object):
                 break
 
         return d[n]
+
+    def recuriveMath(self, a, b, i, n):
+        print(i)
+        sam = 2 * a + (b-a)
+        print("sam", sam)
+
+        if i == n:
+            return sam
+        i += 1
+        return self.recuriveMath(b, sam, i, n)
