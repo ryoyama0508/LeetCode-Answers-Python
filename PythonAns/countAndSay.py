@@ -8,10 +8,10 @@ class Solution(object):
             return "1"
         if n == 2:
             return "11"
-        startNum = [1, 1, 0]
-        return self.recur(startNum, 2, n, 0, 0)
 
-    def recur(self, nums, now, goal, i, j):
+        return self.recur('11', 2, n)
+
+    def recurTLE(self, nums, now, goal, i, j):
         newNums = [0] * (2 * len(nums))
         count = 1
 
@@ -34,4 +34,27 @@ class Solution(object):
             ret = ''.join([str(n) for n in newNums if n != 0])
             return ret
 
-        return self.recur(newNums, now, goal, 0, 0)
+        return self.recurTLE(newNums, now, goal, 0, 0)
+
+    def recur(self, nums, now, goal):
+        newNums = ''
+        nums += '0'
+        count = 1
+
+        for i in range(len(nums)-1):
+            if nums[i + 1] == 0:
+                newNums += count
+                newNums += nums[i]
+                break
+            if nums[i] != nums[i + 1]:
+                newNums += count
+                newNums += nums[i]
+                count = 1
+            else:
+                count += 1
+        now += 1
+
+        if now == goal:
+            return newNums
+
+        return self.recur(newNums, now, goal)
