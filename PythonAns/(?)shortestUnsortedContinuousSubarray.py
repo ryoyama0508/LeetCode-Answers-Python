@@ -49,3 +49,20 @@ class Solution(object):
         print(is_same[::-1].index(False))
         # get tail elem cuz is_same[::-1].index(False) can traverse backword in list from start to tail([::-1])
         return 0 if all(is_same) else len(nums) - is_same.index(False) - is_same[::-1].index(False)
+
+    def bruteForse(self, nums):
+        start, end, n = -1, -1, len(nums)
+
+        temp = nums[0]
+        for i in range(0, n):
+            if nums[i] < temp:
+                end = i
+            temp = max(temp, nums[i])
+
+        temp = nums[n - 1]
+        for i in range(n - 1, -1, -1):
+            if temp < nums[i]:
+                start = i
+            temp = min(temp, nums[i])
+
+        return 0 if (start == -1) else (end - start) + 1
