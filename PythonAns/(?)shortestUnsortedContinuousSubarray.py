@@ -37,3 +37,14 @@ class Solution(object):
             print(leftI)
 
         print(left, right)
+
+    def findUnsortedSubarray2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        is_same = [a == b for a, b in zip(nums, sorted(nums))]
+        print(is_same)
+        print(is_same.index(False))
+        print(is_same[::-1].index(False))
+        return 0 if all(is_same) else len(nums) - is_same.index(False) - is_same[::-1].index(False)
