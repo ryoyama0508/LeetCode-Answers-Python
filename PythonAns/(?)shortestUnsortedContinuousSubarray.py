@@ -47,4 +47,5 @@ class Solution(object):
         print(is_same)
         print(is_same.index(False))
         print(is_same[::-1].index(False))
+        # get tail elem cuz is_same[::-1].index(False) can traverse backword in list from start to tail([::-1])
         return 0 if all(is_same) else len(nums) - is_same.index(False) - is_same[::-1].index(False)
