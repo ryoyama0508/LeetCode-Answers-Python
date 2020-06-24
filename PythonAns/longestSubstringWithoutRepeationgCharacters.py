@@ -13,3 +13,22 @@ class Solution(object):
             dic[ch] = i
         # answer is either in the begining/middle OR some mid to the end of string
         return max(res, len(s)-start)
+
+    def TLElengthOfLongestSubstring(self, s):  # Time Limit Exceeded
+        """
+        :type s: str
+        :rtype: int
+        """
+        return self.recur(s, 0, 0)
+
+    def recur(self, s, i, m):
+        dic = {}
+        now = 0
+        for j in range(i, len(s)):
+            if s[j] in dic:
+                m = max(m, now)
+                return self.recur(s, dic[s[j]]+1, m)
+            dic[s[j]] = j
+            now += 1
+
+        return max(m, now)
