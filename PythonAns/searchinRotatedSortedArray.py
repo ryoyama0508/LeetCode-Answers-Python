@@ -36,3 +36,54 @@ class Solution(object):
                     return self.binarySearch(nums, target, start, midpoint-1)
                 else:
                     return self.binarySearch(nums, target, midpoint+1, end)
+
+
+class AnotherSolution(object):
+    def search(self, nums, target):
+        if nums is None or len(nums) == 0:
+            return -1
+
+        l = 0
+        r = len(nums)-1
+
+        while l <= r:
+            p = (l+r)/2
+
+            if nums[l] == target:
+                return l
+            if nums[p] == target:
+                return p
+            if nums[r] == target:
+                return r
+
+            # array sorted
+            if nums[l] < nums[r]:
+                # binary search
+
+                # check target is in range
+                if target < nums[l] or nums[r] < target:
+                    return -1
+
+                if target < nums[p]:
+                    r = p-1
+                else:
+                    l = p+1
+
+            # array not sorted
+            else:
+                # the left half is sorted
+                if nums[l] < nums[p]:
+                    # the left half is sorted and target in it, search left.
+                    if nums[l] < target and target < nums[p]:
+                        r = p-1
+                    else:
+                        l = p+1
+
+                # the right half is sorted
+                else:
+                    # the right half is sorted and target in it, search right.
+                    if nums[p] < target and target < nums[r]:
+                        l = p+1
+                    else:
+                        r = p-1
+        return -1
