@@ -25,3 +25,20 @@ class Solution(object):
         addressDic[head.val] = hex(id(head.next))
         isTrue = self.chaseCircle(head.next, addressDic)
         return isTrue
+
+
+class Solution1(object):
+    def hasCycle(self, head):
+        try:
+            fast, slow = head.next, head
+            while fast != slow:
+                fast = fast.next.next
+                slow = slow.next
+        except:
+            return False
+
+        slow, fast = head, fast.next
+        while fast != slow:
+            fast = fast.next
+            slow = slow.next
+        return True
