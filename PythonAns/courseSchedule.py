@@ -6,7 +6,6 @@ class Solution(object):
     def canFinish1(self, numCourses, prerequisites):
         forward = {i: set() for i in range(numCourses)}
         backward = dict(set)
-        test = dict()
         for i, j in prerequisites:
             forward[i].add(j)
             backward[j].add(i)
