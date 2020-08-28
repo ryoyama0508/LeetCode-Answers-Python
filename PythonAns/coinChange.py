@@ -18,6 +18,32 @@ class Solution:
                 self.dp(coins, rest - coins[j], depth+1)
 
 
-obj = Solution()
+class Solution2(object):
+    def __init__(self):
+        self.memo = {0: 0}
+
+    def coinChange(self, coins, amount):
+        coins.sort()
+        minCoins = self.dp(coins, amount)
+        return minCoins if minCoins != float('inf') else -1
+
+    def dp(self, coins, rest):
+        print(rest)
+        if rest in self.memo:
+            return self.memo[rest]
+
+        minDepth = float('inf')
+        for coin in coins:
+            if rest - coin < 0:
+                break
+            d = self.dp(coins, rest - coin)
+            minDepth = min(minDepth, d+1)
+
+        self.memo[rest] = minDepth
+        print(minDepth, rest)
+        return minDepth
+
+
+obj2 = Solution2()
 coins = [1, 2, 5]
-print(obj.coinChange(coins, 12))
+print(obj2.coinChange(coins, 12))

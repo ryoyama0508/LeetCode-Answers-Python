@@ -1,26 +1,28 @@
-from collections import deque
-# Definition for a Node.
+class Solution:
+    def canFinish(self, n, pres):
+        from collections import deque
+        outdegree = [[] for _ in range(n)]
+        indegree = [0] * n
+
+        for p in pres:
+            indegree[p[0]] += 1
+            outdegree[p[1]].append(p[0])
+
+        dq = deque()
+        for i in range(n):
+            if indegree[i] == 0:
+                dq.append(i)
+
+        result = []
+        while dq:
+            x = dq.popleft()
+            result += [x]
+            for i in outdegree[x]:
+                indegree[i] -= 1
+                if indegree[i] == 0:
+                    dq.append(i)
+        return len(result) == n
 
 
-class Solution(object):
-    def canFinish1(self, numCourses, prerequisites):
-        forward = {i: set() for i in range(numCourses)}
-        backward = dict(set)
-        for i, j in prerequisites:
-            forward[i].add(j)
-            backward[j].add(i)
-        stack = [node for node in forward if len(forward[node]) == 0]
-        while stack:
-            node = stack.pop()
-            # take no connection node
-            for neigh in backward[node]:
-                # check adjacent node
-                # erace direction
-                forward[neigh].remove(node)
-                # check if there is no direction mark
-                if len(forward[neigh]) == 0:
-                    # if 0, you can stack
-                    stack.append(neigh)
-            # erase forward to return not forward at the end of this func
-            forward.pop(node)
-        return not forward
+obj = Solution()
+print(obj.canFinish(3, [[1, 0], [2, 1]]))
