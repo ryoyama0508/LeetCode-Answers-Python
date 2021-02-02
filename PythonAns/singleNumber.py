@@ -1,15 +1,8 @@
 class Solution(object):
     def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-
         res = 0
         for num in nums:
-            res ^= num  # https://qiita.com/YamadaTakahito/items/79693ce08cad8baf130b
-            print(res)
+            res ^= num
 
         return res
 
