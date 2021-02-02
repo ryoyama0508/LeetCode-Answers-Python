@@ -1,0 +1,17 @@
+Oct 24 2020 3:12 am
+trring to solve decode ways(91). 
+but i couldn't so need to see some hint and easier qs.
+all I know is so far for loop and make pattered num and check if these combined number
+is within 1- 26. 
+-----------
+Oct 24 2020 5:08 am
+trying to solve decode ways(91) again.
+kinda come up with idea and solution by myself
+but that wasnt perfect so need to recosider how my algorithm
+works wrong
+-----------
+Oct 27 2020 4:38 am
+solved but it takes too wrong solution
+u need to think about idea clearly 
+more pattered and algorithmic way
+-----------

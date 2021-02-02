@@ -7,64 +7,41 @@ class ListNode(object):
 
 class Solution(object):
     def mergeTwoLists(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
-        if l1 is None:
+        if l1 is None and l2 is None:
+            return None
+        elif l1 is None:
             return l2
-        if l2 is None:
+        elif l2 is None:
             return l1
-
-        n1 = l1
-        n2 = l2
-
-        ret = currNode = ListNode(0)
-
-        if n1.val <= n2.val:
-            currNode = n1
-            ret = currNode
-            if n1.next:
-                n1 = n1.next
-            else:
-                n1.next = n2
-                return ret
+        head = curr = ListNode(0)
+        if l1.val <= l2.val:
+            head = curr = l1
+            l1 = l1.next
         else:
-            currNode = n2
-            ret = currNode
-            if n2.next:
-                n2 = n2.next
+            head = curr = l2
+            l2 = l2.next
+
+        while l1 and l2:
+            if l1.val <= l2.val:
+                curr.next = l1
+                l1 = l1.next
             else:
-                n2.next = n1
-                return ret
+                curr.next = l2
+                l2 = l2.next
+            curr = curr.next
 
-        while True:
-            if n1.val <= n2.val:
-                currNode.next = n1
-                currNode = currNode.next
+        curr.next = l1 or l2
+        return head
 
-                if n1.next:
-                    n1 = n1.next
-                else:
-                    break
+    def mergeTwoLists2(self, l1, l2):
+        dummy = cur = ListNode(0)
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = l1
+                l1 = l1.next
             else:
-                currNode.next = n2
-                currNode = currNode.next
-
-                if n2.next:
-                    n2 = n2.next
-                else:
-                    break
-
-        if n1.next is None:
-            currNode.next = n2
-        elif n2.next is None:
-            currNode.next = n1
-        else:
-            if currNode.val == n1.val:
-                currNode.next = n2
-            elif currNode.val == n2.val:
-                currNode.next = n1
-
-        return ret
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+        cur.next = l1 or l2
+        return dummy.next

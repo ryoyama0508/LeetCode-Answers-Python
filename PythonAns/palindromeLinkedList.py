@@ -35,6 +35,20 @@ class Solution(object):
 
         return True
 
+    def isPalindrome2(self, num: int) -> bool:
+        str_num = str(num)
+        len_num = len(str_num)
+        if len_num == 1:
+            return True
+        if num < 0:
+            return False
+
+        rev_str_num = str_num[len_num::-1]
+        if len(rev_str_num) != len_num or int(rev_str_num) != num:
+            return False
+        else:
+            return True
+
 
 class falseSolution(object):
     def isPalindrome(self, head):
@@ -62,3 +76,7 @@ class falseSolution(object):
                 return True
             else:
                 return False
+
+
+obj = Solution()
+print(obj.isPalindrome2(1))
