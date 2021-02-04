@@ -36,9 +36,10 @@ class Solution1(object):
                 slow = slow.next
         except:
             return False
+        return True
 
-        slow, fast = head, fast.next
+        """ slow, fast = head, fast.next
         while fast != slow:
             fast = fast.next
             slow = slow.next
-        return True
+        return True """
