@@ -14,3 +14,5 @@ class Solution(object):
         for i, v in dic.items():
             if v > (len(nums)/2):
                 return i
+
+# Follow-up: Could you solve the problem in linear time and in O(1) space?

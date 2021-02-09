@@ -77,6 +77,55 @@ class falseSolution(object):
             else:
                 return False
 
+    def isPalindrome3(self, head):
+        if head is None:
+            return True
+        elif head.next is None:
+            return True
+        elif head.next.next is None:
+            if head.val == head.next.val:
+                return True
+            else:
+                return False
+        c = -1
+        now = head
+        while now:
+            now = now.next
+            c += 1
+
+        odd = False
+        if c % 2 == 0:
+            odd = True
+        print(odd)
+
+        mid_c = c//2 - 1
+        right, left, late, = head.next.next, head.next, head
+        head.next = None
+        print(mid_c)
+        if mid_c == 0:
+            left.next = late
+        else:
+            for _ in range(mid_c):
+                left.next = late
+                late = left
+                left = right
+                right = right.next
+
+        print(left.val, right.val)
+
+        if odd == True:
+            left = left.next
+
+        print(left.val, right.val)
+
+        while right:
+            if right.val != left.val:
+                return False
+            right = right.next
+            left = left.next
+
+        return True
+
 
 obj = Solution()
 print(obj.isPalindrome2(1))
