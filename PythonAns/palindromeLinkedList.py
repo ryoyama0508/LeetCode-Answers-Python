@@ -22,13 +22,13 @@ class Solution(object):
             head = head.next
 
         list2 = []
-        i = len(list1)-1
+        i = len(list1) - 1
         while i > -1:
             list2.append(list1[i])
             i -= 1
 
         j = 0
-        while j < len(list2)-1:
+        while j < len(list2) - 1:
             if list1[j] != list2[j]:
                 return False
             j += 1
@@ -98,8 +98,12 @@ class falseSolution(object):
             odd = True
         print(odd)
 
-        mid_c = c//2 - 1
-        right, left, late, = head.next.next, head.next, head
+        mid_c = c // 2 - 1
+        right, left, late, = (
+            head.next.next,
+            head.next,
+            head,
+        )
         head.next = None
         print(mid_c)
         if mid_c == 0:
@@ -113,7 +117,7 @@ class falseSolution(object):
 
         print(left.val, right.val)
 
-        if odd == True:
+        if odd is True:
             left = left.next
 
         print(left.val, right.val)
@@ -129,3 +133,5 @@ class falseSolution(object):
 
 obj = Solution()
 print(obj.isPalindrome2(1))
+
+# test
