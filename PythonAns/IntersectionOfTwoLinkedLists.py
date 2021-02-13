@@ -66,3 +66,24 @@ class Solution(object):
                     retB = retB.next
                 return retA
             return None
+
+    def getIntersectionNode3(self, headA, headB):
+        nowA, nowB = headA, headB
+        while nowA and nowB:
+            nowA = nowA.next
+            nowB = nowB.next
+
+        if nowA:
+            while nowA:
+                nowA = nowA.next
+                headB = headB.next
+        elif nowB:
+            while nowB:
+                nowB = nowB.next
+                headA = headA.next
+
+        while headA is not headB:
+            headA = headA.next
+            headB = headB.next
+
+        return headA
