@@ -122,7 +122,7 @@ class MinStack3(object):
 # Your MinStack object will be instantiated and called as such:
 obj = MinStack3()
 
-inp = [-2, 0, -3]
+inp = [-2, 0, -3, -1]
 for i in inp:
     obj.push(i)
 
