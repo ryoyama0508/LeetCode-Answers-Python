@@ -26,3 +26,28 @@ class Solution(object):
             return root
 
         # what is the actual goal?? the goal is return node!!!
+
+    def lowestCommonAncestor2(self, root, p, q):
+        self.isPorQ(root, p, q)
+        return self.ret
+
+    def isPorQ(self, root, p, q):
+        if root is None:
+            return False
+
+        l = self.isPorQ(root.left, p, q)
+        r = self.isPorQ(root.right, p, q)
+        if l and r:
+            self.ret = root
+            return False
+        elif l or r:
+            if root.val == p.val or root.val == q.val:
+                self.ret = root
+                return False
+            else:
+                return True
+        else:
+            if root.val == p.val or root.val == q.val:
+                return True
+            else:
+                return False
