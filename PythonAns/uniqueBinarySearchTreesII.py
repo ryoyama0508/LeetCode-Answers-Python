@@ -7,7 +7,7 @@ class TreeNode:
 
 
 class Solution:
-    def generateTrees(self, n: int) -> List[TreeNode]:
+    def generateTrees(self, n):
         nodes = []
         for i in range(1, n + 1):
             nodes.append(i)
