@@ -18,7 +18,9 @@ class Solution:
 
     def permuteUnique2(self, nums):
         self.ret = []
-        nums.sort()
+        nums.sort()  # point
+        # sorting and skip method can skip the same subtree of the left next tree.
+        # you can see the doc here
         self.helper2(nums, [])
         return self.ret
 
