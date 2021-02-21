@@ -20,7 +20,9 @@ class Solution:
         self.ret = []
         nums.sort()  # point
         # sorting and skip method can skip the same subtree of the left next tree.
-        # you can see the doc here
+        # you can see the doc here https://leetcode.com/problems/permutations-ii/discuss/18649/Python-easy-to-understand-backtracking-solution.
+        # https://docs.google.com/document/d/1e_ratYHpYwofheS0Ccve8_d-3bAUkTmrJ2EFGs3AvuI/edit
+
         self.helper2(nums, [])
         return self.ret
 
