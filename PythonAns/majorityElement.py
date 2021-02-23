@@ -46,3 +46,8 @@ class SolutionFromDiscussion:
                         1 << i
                     )  # mask bit i into the result (insert and slide to add)
         return res
+
+
+print("{0:b}".format(-2147483648))
+print(len("{0:b}".format(-2147483648)))
+print("{0:b}".format(-2147483648 >> 21))
