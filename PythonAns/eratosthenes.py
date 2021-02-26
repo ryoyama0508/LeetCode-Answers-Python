@@ -19,6 +19,7 @@ def SieveOfEratosthenes(n):
 
             # Update all multiples of p
             for i in range(p * 2, n + 1, p):  # init num, until, plus
+                # inital p could be p * p since p * 2 is already 'Falsed' before cuz its definitely divisible by 2.
                 prime[i] = False
         p += 1
 
